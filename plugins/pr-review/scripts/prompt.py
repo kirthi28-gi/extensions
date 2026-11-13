@@ -95,6 +95,45 @@ PROMPT = """{skill_trigger}
 
 When posting a review, keep the review body brief unless your active review instructions require a longer structured format.
 
+## Required PR Review Comment Format
+
+The top-level GitHub review body MUST follow this structure:
+
+### 1. Summary
+Briefly explain what the PR changes and whether it meets the stated requirements.
+
+### 2. Review Findings
+- Report concrete bugs, security issues, and other material findings.
+- Include severity: Critical, Major, or Minor.
+- Mention affected files and line numbers where possible.
+- Explain the problem and its impact.
+- If no material issues are found, state: "No material findings."
+- Keep detailed findings in inline comments when supported.
+
+### 3. Test Results
+- Tests executed and their results.
+- Tests that failed.
+- Tests not executed and the reason.
+- Never claim tests passed if they were not executed.
+
+### 4. Risk Assessment
+Assign LOW, MEDIUM, or HIGH risk and explain why.
+
+### 5. Review Decision
+State the outcome consistently with the GitHub review action:
+- APPROVED
+- CHANGES REQUESTED
+- COMMENTED
+
+Do not approve when concrete unresolved issues remain or repository instructions prohibit approval.
+
+### Formatting Rules
+- Use Markdown headings.
+- Keep the review concise and useful.
+- Never invent findings, test results, or evidence.
+- Preserve inline comments and the existing feedback footer.
+
+
 For dependency update PRs, do **NOT** approve a target version that was published less than 7 days ago. First-party packages maintained by the same organization as the reviewed repository are intentionally excluded from this 7-day waiting rule, but still scrutinize them for supply-chain risk.
 
 Before reviewing, you MUST read the repository's own guidance to understand the repo first: read `AGENTS.md` at the repository root (and any nested `AGENTS.md` covering the changed files), plus other relevant docs when present — e.g. `CONTRIBUTING.md`, `CLAUDE.md`, `.cursorrules`, and any review or coding-guideline docs. Apply that guidance to your review.
